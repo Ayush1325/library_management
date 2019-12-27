@@ -28,14 +28,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QListWidget" name="bookList">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-       </widget>
+       <widget class="QTableView" name="bookList"/>
       </item>
      </layout>
     </item>
@@ -79,7 +72,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>Edit</string>
+         <string>Edit Book</string>
         </property>
        </widget>
       </item>

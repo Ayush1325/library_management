@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     abstractstorageclass.cpp \
     book.cpp \
+    filestorage.cpp \
     main.cpp \
     mainwindow.cpp \
     person.cpp
@@ -25,6 +26,7 @@ SOURCES += \
 HEADERS += \
     abstractstorageclass.h \
     book.h \
+    filestorage.h \
     mainwindow.h \
     person.h
 

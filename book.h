@@ -3,6 +3,7 @@
 #include "QString"
 #include "QUuid"
 #include "QDate"
+#include "QStandardItem"
 
 class Book
 {
@@ -18,11 +19,18 @@ private:
     bool is_issued;
 
 public:
+    Book();
     Book(QString, QString , QString, QDate);
+    Book(QUuid, QUuid, QString, QString, bool, QDate, QString, QDate, QDate);
 
     void Issue(QUuid);
 
     void Return();
+
+    QList<QStandardItem*> returnItem();
+
+    friend QDataStream &operator<<(QDataStream &out, const Book &book);
+    friend QDataStream &operator>>(QDataStream &in, Book &book);
 };
 
 #endif // BOOK_H
