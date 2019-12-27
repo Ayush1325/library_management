@@ -8,10 +8,11 @@
 class FileStorage : public AbstractStorageClass
 {
 private:
-    QString people_file_name = "people.dat";
+    QString member_file_name = "member.dat";
     QString book_file_name = "books.dat";
 public:
     FileStorage(QMainWindow *m);
+    ~FileStorage();
 
     void addBook(Book*) override;
     void addPerson(Person*) override;

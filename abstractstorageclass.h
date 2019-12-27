@@ -11,6 +11,7 @@ protected:
     QMainWindow *main_window;
 public:
     AbstractStorageClass(QMainWindow *);
+    ~AbstractStorageClass();
 
     virtual void addBook(Book*);
     virtual void addPerson(Person*);

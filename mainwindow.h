@@ -8,6 +8,7 @@
 #include "filestorage.h"
 #include "QStringListModel"
 #include "QStandardItemModel"
+#include "bookdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

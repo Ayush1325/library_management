@@ -7,11 +7,11 @@ FileStorage::FileStorage(QMainWindow *m) : AbstractStorageClass(m)
 
 void FileStorage::addBook(Book* book) {
     QFile file(book_file_name);
-    if(!file.open(QIODevice::WriteOnly)) {
+    if(!file.open(QIODevice::Append)) {
         QMessageBox::warning(this->main_window, "Warning", "Cannot open file : " + file.errorString());
     }
     QDataStream out(&file);
-    out << book;
+    out << (*book);
     file.close();
 }
 
@@ -37,10 +37,18 @@ QList<Book> FileStorage::getAllBooks() {
 }
 
 void FileStorage::checkStorage() {
-    QFile file(book_file_name);
-
-    if(!file.exists()) {
-        file.open(QIODevice::WriteOnly);
+    QFile book_file(book_file_name);
+    QFile member_file(member_file_name);
+    if(!book_file.exists()) {
+        book_file.open(QIODevice::WriteOnly);
     }
-    file.close();
+    if(!member_file.exists()) {
+        member_file.open(QIODevice::WriteOnly);
+    }
+    book_file.close();
+    member_file.close();
+}
+
+FileStorage::~FileStorage() {
+
 }

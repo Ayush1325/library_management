@@ -13,6 +13,10 @@ void AbstractStorageClass::removeBook(Book*) {}
 
 void AbstractStorageClass::removePerson(Person*) {}
 
-QList<Book> AbstractStorageClass::getAllBooks() {}
+QList<Book> AbstractStorageClass::getAllBooks() {return QList<Book>();}
 
 void AbstractStorageClass::checkStorage() {}
+
+AbstractStorageClass::~AbstractStorageClass() {
+    delete main_window;
+}

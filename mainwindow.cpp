@@ -29,12 +29,14 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete storage;
+    delete model;
 }
 
 
 void MainWindow::on_addBookBtn_clicked()
 {
-    Book book("temp", "temp", "temp", QDate::currentDate());
-    this->storage->addBook(&book);
-    this->model->appendRow(book.returnItem());
+    BookDialog book_dialog(this, this->storage, this->model);
+    book_dialog.setModal(true);
+    book_dialog.exec();
 }

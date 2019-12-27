@@ -18,6 +18,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     abstractstorageclass.cpp \
     book.cpp \
+    bookdialog.cpp \
     filestorage.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -26,11 +27,13 @@ SOURCES += \
 HEADERS += \
     abstractstorageclass.h \
     book.h \
+    bookdialog.h \
     filestorage.h \
     mainwindow.h \
     person.h
 
 FORMS += \
+    bookdialog.ui \
     mainwindow.ui
 
 # Default rules for deployment.

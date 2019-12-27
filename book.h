@@ -15,13 +15,12 @@ private:
     QString publisher;
     QDate publish_date;
     QDate issue_date;
-    QDate return_date;
     bool is_issued;
 
 public:
     Book();
     Book(QString, QString , QString, QDate);
-    Book(QUuid, QUuid, QString, QString, bool, QDate, QString, QDate, QDate);
+    Book(QUuid, QUuid, QString, QString, bool, QDate, QString, QDate);
 
     void Issue(QUuid);
 
