@@ -46,7 +46,7 @@ QList<QStandardItem*> Book::returnItem() {
 
 QDataStream &operator<<(QDataStream &out, const Book &book)
 {
-    out << book.book_id.toString() << book.issuer_id.toString()
+    out << book.book_id << book.issuer_id
         << book.title << book.author
         << book.is_issued << book.issue_date
         << book.publisher << book.publish_date;
@@ -55,16 +55,14 @@ QDataStream &operator<<(QDataStream &out, const Book &book)
 
 QDataStream &operator>>(QDataStream &in, Book &book)
 {
-    QString title, author, publisher, b, i;
+    QString title, author, publisher;
     QUuid book_id, issuer_id;
     QDate issue_date, publish_date;
     bool is_issued;
-    in >> b >> i
+    in >> book_id >> issuer_id
             >> title >> author
             >> is_issued >> issue_date
             >> publisher >> publish_date;
-    book_id = QUuid::fromString(b);
-    issuer_id = QUuid::fromString(i);
     book = Book(book_id, issuer_id, title, author, is_issued, issue_date, publisher, publish_date);
     return in;
 }

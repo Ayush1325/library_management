@@ -22,6 +22,7 @@ SOURCES += \
     filestorage.cpp \
     main.cpp \
     mainwindow.cpp \
+    memberdialog.cpp \
     person.cpp
 
 HEADERS += \
@@ -30,11 +31,13 @@ HEADERS += \
     bookdialog.h \
     filestorage.h \
     mainwindow.h \
+    memberdialog.h \
     person.h
 
 FORMS += \
     bookdialog.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    memberdialog.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

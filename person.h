@@ -3,6 +3,7 @@
 #include "QString"
 #include "QDate"
 #include "QUuid"
+#include "QStandardItem"
 
 class Person
 {
@@ -13,7 +14,14 @@ private:
     QString address;
 
 public:
+    Person();
     Person(QString, QString, QString);
+    Person(QUuid, QString, QString, QString);
+
+    QList<QStandardItem*> returnItem();
+
+    friend QDataStream &operator<<(QDataStream &out, const Person &member);
+    friend QDataStream &operator>>(QDataStream &in, Person &member);
 };
 
 #endif // PERSON_H

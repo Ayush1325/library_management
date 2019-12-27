@@ -40,3 +40,10 @@ void MainWindow::on_addBookBtn_clicked()
     book_dialog.setModal(true);
     book_dialog.exec();
 }
+
+void MainWindow::on_addMember_clicked()
+{
+    MemberDialog dialog(this, this->storage);
+    dialog.setModal(true);
+    dialog.exec();
+}

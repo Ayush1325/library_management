@@ -9,6 +9,7 @@
 #include "QStringListModel"
 #include "QStandardItemModel"
 #include "bookdialog.h"
+#include "memberdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -24,6 +25,8 @@ public:
 
 private slots:
     void on_addBookBtn_clicked();
+
+    void on_addMember_clicked();
 
 private:
     Ui::MainWindow *ui;

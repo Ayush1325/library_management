@@ -15,7 +15,15 @@ void FileStorage::addBook(Book* book) {
     file.close();
 }
 
-void FileStorage::addPerson(Person*) {}
+void FileStorage::addPerson(Person* member) {
+    QFile file(member_file_name);
+    if(!file.open(QIODevice::Append)) {
+        QMessageBox::warning(this->main_window, "Warning", "Cannot open file : " + file.errorString());
+    }
+    QDataStream out(&file);
+    out << (*member);
+    file.close();
+}
 
 void FileStorage::removeBook(Book*) {}
 
