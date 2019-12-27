@@ -38,9 +38,11 @@ QList<QStandardItem*> Book::returnItem() {
     QStandardItem* publisher = new QStandardItem(this->publisher);
     QStandardItem* book_id = new QStandardItem(this->book_id.toString());
     QStandardItem* author = new QStandardItem(this->author);
+    QString stat = status();
+    QStandardItem* status = new QStandardItem(stat);
 
     QList<QStandardItem*> temp;
-    temp << book_id << title << author << publisher;
+    temp << book_id << title << author << publisher << status;
     return temp;
 }
 
@@ -65,4 +67,8 @@ QDataStream &operator>>(QDataStream &in, Book &book)
             >> publisher >> publish_date;
     book = Book(book_id, issuer_id, title, author, is_issued, issue_date, publisher, publish_date);
     return in;
+}
+
+QString Book::status() {
+    return is_issued? "Yes" : "No";
 }

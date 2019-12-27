@@ -9,9 +9,9 @@ void AbstractStorageClass::addBook(Book*) {}
 
 void AbstractStorageClass::addPerson(Person*) {}
 
-void AbstractStorageClass::removeBook(Book*) {}
+void AbstractStorageClass::removeBook(QUuid) {}
 
-void AbstractStorageClass::removePerson(Person*) {}
+void AbstractStorageClass::removePerson(QUuid) {}
 
 QList<Book> AbstractStorageClass::getAllBooks() {return QList<Book>();}
 

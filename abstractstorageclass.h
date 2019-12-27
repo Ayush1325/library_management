@@ -15,8 +15,8 @@ public:
 
     virtual void addBook(Book*);
     virtual void addPerson(Person*);
-    virtual void removeBook(Book*);
-    virtual void removePerson(Person*);
+    virtual void removeBook(QUuid);
+    virtual void removePerson(QUuid);
     virtual QList<Book> getAllBooks();
     virtual void checkStorage();
 };

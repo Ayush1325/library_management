@@ -1,4 +1,5 @@
 #include "filestorage.h"
+#include "QDebug"
 
 FileStorage::FileStorage(QMainWindow *m) : AbstractStorageClass(m)
 {
@@ -25,9 +26,51 @@ void FileStorage::addPerson(Person* member) {
     file.close();
 }
 
-void FileStorage::removeBook(Book*) {}
+void FileStorage::removeBook(QUuid id) {
+    QFile rfile(book_file_name), wfile("temp.dat");
+    Book obj;
+    if(!rfile.open(QIODevice::ReadOnly)) {
+        QMessageBox::warning(this->main_window, "Warning", "Cannot open file : " + rfile.errorString());
+    }
+    if(!wfile.open(QIODevice::WriteOnly)) {
+        QMessageBox::warning(this->main_window, "Warning", "Cannot open file : " + wfile.errorString());
+    }
+    QDataStream in(&rfile), out(&wfile);
+    while(!rfile.atEnd()) {
+        in >> obj;
+        if (obj.getBookId() != id) {
+            out << obj;
+        }
+    }
+    rfile.remove();
+    rfile.close();
+    bool t = wfile.rename(book_file_name);
+    qDebug() << t;
+    wfile.close();
+}
 
-void FileStorage::removePerson(Person*) {}
+void FileStorage::removePerson(QUuid id) {
+    QFile rfile(member_file_name), wfile("temp.dat");
+    Person obj;
+    if(!rfile.open(QIODevice::ReadOnly)) {
+        QMessageBox::warning(this->main_window, "Warning", "Cannot open file : " + rfile.errorString());
+    }
+    if(!wfile.open(QIODevice::WriteOnly)) {
+        QMessageBox::warning(this->main_window, "Warning", "Cannot open file : " + wfile.errorString());
+    }
+    QDataStream in(&rfile), out(&wfile);
+    while(!rfile.atEnd()) {
+        in >> obj;
+        if (obj.getId() != id) {
+            out << obj;
+        }
+    }
+    rfile.remove();
+    rfile.close();
+    bool t = wfile.rename(book_file_name);
+    qDebug() << t;
+    wfile.close();
+}
 
 QList<Book> FileStorage::getAllBooks() {
     QFile file(book_file_name);

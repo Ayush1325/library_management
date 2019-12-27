@@ -16,8 +16,8 @@ public:
 
     void addBook(Book*) override;
     void addPerson(Person*) override;
-    void removeBook(Book*) override;
-    void removePerson(Person*) override;
+    void removeBook(QUuid) override;
+    void removePerson(QUuid) override;
 
     QList<Book> getAllBooks() override;
 

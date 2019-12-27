@@ -19,6 +19,7 @@ public:
     Person(QUuid, QString, QString, QString);
 
     QList<QStandardItem*> returnItem();
+    QUuid getId() {return id;}
 
     friend QDataStream &operator<<(QDataStream &out, const Person &member);
     friend QDataStream &operator>>(QDataStream &in, Person &member);

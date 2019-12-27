@@ -17,6 +17,8 @@ private:
     QDate issue_date;
     bool is_issued;
 
+    QString status();
+
 public:
     Book();
     Book(QString, QString , QString, QDate);
@@ -27,6 +29,8 @@ public:
     void Return();
 
     QList<QStandardItem*> returnItem();
+
+    QUuid getBookId() {return book_id;}
 
     friend QDataStream &operator<<(QDataStream &out, const Book &book);
     friend QDataStream &operator>>(QDataStream &in, Book &book);
