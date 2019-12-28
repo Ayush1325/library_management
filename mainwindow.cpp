@@ -92,3 +92,18 @@ void MainWindow::on_editBtn_clicked()
     dialog.setModal(true);
     dialog.exec();
 }
+
+void MainWindow::on_searchBox_textChanged(const QString &arg1)
+{
+    QList<QStandardItem*> temp = this->model->findItems(arg1, Qt::MatchFlag::MatchContains, this->searchOptions);
+    for(int i = 0; i < temp.size(); ++i) {
+        QStandardItem* t = temp.at(i);
+        QList<QStandardItem*> l = this->model->takeRow(t->row());
+        this->model->insertRow(0, l);
+    }
+}
+
+void MainWindow::on_searchOption_currentIndexChanged(int index)
+{
+    this->searchOptions = index;
+}

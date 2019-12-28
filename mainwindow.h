@@ -39,10 +39,15 @@ private slots:
 
     void on_editBtn_clicked();
 
+    void on_searchBox_textChanged(const QString &arg1);
+
+    void on_searchOption_currentIndexChanged(int index);
+
 private:
     Ui::MainWindow *ui;
     AbstractStorageClass *storage;
     QStandardItemModel *model;
     uint activated_row = 0;
+    int searchOptions = 0;
 };
 #endif // MAINWINDOW_H
