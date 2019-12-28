@@ -1,10 +1,7 @@
 #include "filestorage.h"
 #include "QDebug"
 
-FileStorage::FileStorage(QMainWindow *m) : AbstractStorageClass(m)
-{
-
-}
+FileStorage::FileStorage(QMainWindow *m) : AbstractStorageClass(m) {}
 
 void FileStorage::addBook(Book* book) {
     QFile file(book_file_name);
@@ -99,6 +96,33 @@ void FileStorage::checkStorage() {
     book_file.close();
     member_file.close();
 }
+
+Book FileStorage::editBook(QUuid id, std::function<void(Book &)> func) {
+    QFile rfile(book_file_name), wfile("temp.dat");
+    Book obj;
+    Book robj;
+    if(!rfile.open(QIODevice::ReadOnly)) {
+        QMessageBox::warning(this->main_window, "Warning", "Cannot open file : " + rfile.errorString());
+    }
+    if(!wfile.open(QIODevice::WriteOnly)) {
+        QMessageBox::warning(this->main_window, "Warning", "Cannot open file : " + wfile.errorString());
+    }
+    QDataStream in(&rfile), out(&wfile);
+    while(!rfile.atEnd()) {
+        in >> obj;
+        if (obj.getBookId() == id) {
+            func(obj);
+            robj = obj;
+        }
+        out << obj;
+    }
+    rfile.remove();
+    rfile.close();
+    wfile.rename(book_file_name);
+    wfile.close();
+    return robj;
+}
+
 
 FileStorage::~FileStorage() {
 

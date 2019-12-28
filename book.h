@@ -32,6 +32,8 @@ public:
 
     QUuid getBookId() {return book_id;}
 
+    void Update(QString, QString, QString, QDate);
+
     friend QDataStream &operator<<(QDataStream &out, const Book &book);
     friend QDataStream &operator>>(QDataStream &in, Book &book);
 };

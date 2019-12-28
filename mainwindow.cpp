@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->storage->checkStorage();
 
     QStringList titles;
-    titles << "Book Id" << "Title" << "Author" << "Publisher" << "Available";
+    titles << "Book Id" << "Title" << "Author" << "Publisher" << "Publish Date" << "Available";
 
     this->model = new QStandardItemModel();
     this->model->setHorizontalHeaderLabels(titles);
@@ -70,7 +70,8 @@ void MainWindow::on_bookList_clicked(const QModelIndex &index)
 
 void MainWindow::on_issueBtn_clicked()
 {
-
+    QUuid id = QUuid::fromString(this->model->item(this->activated_row)->text());
+//    this->storage->editBook(id, [](Book &obj) {obj.Issue(QUuid::fromString('123'));});
 }
 
 void MainWindow::on_returnBtn_clicked()
@@ -83,4 +84,11 @@ void MainWindow::on_removeBtn_clicked()
     QUuid id = QUuid::fromString(this->model->item(this->activated_row)->text());
     this->storage->removeBook(id);
     this->model->removeRow(this->activated_row);
+}
+
+void MainWindow::on_editBtn_clicked()
+{
+    EditBookDialog dialog(this, this->storage, this->model, this->activated_row);
+    dialog.setModal(true);
+    dialog.exec();
 }

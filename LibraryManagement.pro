@@ -19,6 +19,7 @@ SOURCES += \
     abstractstorageclass.cpp \
     book.cpp \
     bookdialog.cpp \
+    editbookdialog.cpp \
     filestorage.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -29,6 +30,7 @@ HEADERS += \
     abstractstorageclass.h \
     book.h \
     bookdialog.h \
+    editbookdialog.h \
     filestorage.h \
     mainwindow.h \
     memberdialog.h \
@@ -36,6 +38,7 @@ HEADERS += \
 
 FORMS += \
     bookdialog.ui \
+    editbookdialog.ui \
     mainwindow.ui \
     memberdialog.ui
 

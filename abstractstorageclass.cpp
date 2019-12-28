@@ -17,6 +17,8 @@ QList<Book> AbstractStorageClass::getAllBooks() {return QList<Book>();}
 
 void AbstractStorageClass::checkStorage() {}
 
+Book AbstractStorageClass::editBook(QUuid, std::function<void(Book &)>) {}
+
 AbstractStorageClass::~AbstractStorageClass() {
     delete main_window;
 }

@@ -11,6 +11,7 @@
 #include "bookdialog.h"
 #include "memberdialog.h"
 #include "QDebug"
+#include "editbookdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,6 +36,8 @@ private slots:
     void on_returnBtn_clicked();
 
     void on_removeBtn_clicked();
+
+    void on_editBtn_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -19,6 +19,8 @@ public:
     virtual void removePerson(QUuid);
     virtual QList<Book> getAllBooks();
     virtual void checkStorage();
+
+    virtual Book editBook(QUuid, std::function<void(Book &)>);
 };
 
 #endif // ABSTRACTSTORAGECLASS_H
