@@ -18,6 +18,7 @@ public:
     virtual void removeBook(QUuid);
     virtual void removePerson(QUuid);
     virtual QList<Book> getAllBooks();
+    virtual QStringList getAllMemberIds();
     virtual void checkStorage();
 
     virtual Book editBook(QUuid, std::function<void(Book &)>);

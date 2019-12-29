@@ -12,6 +12,7 @@
 #include "memberdialog.h"
 #include "QDebug"
 #include "editbookdialog.h"
+#include "issuebookdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

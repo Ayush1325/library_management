@@ -123,6 +123,22 @@ Book FileStorage::editBook(QUuid id, std::function<void(Book &)> func) {
     return robj;
 }
 
+QStringList FileStorage::getAllMemberIds() {
+    QFile file(member_file_name);
+    QStringList ids;
+    Person obj;
+    if(!file.open(QIODevice::ReadOnly)) {
+        QMessageBox::warning(this->main_window, "Warning", "Cannot open file : " + file.errorString());
+    }
+    QDataStream in(&file);
+    while(!file.atEnd()) {
+        in >> obj;
+        ids.append(obj.getId().toString());
+    }
+    file.close();
+    return ids;
+}
+
 
 FileStorage::~FileStorage() {
 

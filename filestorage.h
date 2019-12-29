@@ -19,6 +19,7 @@ public:
     void removeBook(QUuid) override;
     void removePerson(QUuid) override;
     Book editBook(QUuid, std::function<void(Book &)>) override;
+    QStringList getAllMemberIds() override;
 
     QList<Book> getAllBooks() override;
 

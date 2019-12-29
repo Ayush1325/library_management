@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->storage->checkStorage();
 
     QStringList titles;
-    titles << "Book Id" << "Title" << "Author" << "Publisher" << "Publish Date" << "Available";
+    titles << "Book Id" << "Title" << "Author" << "Publisher" << "Publish Date" << "Available" << "Issue Date";
 
     this->model = new QStandardItemModel();
     this->model->setHorizontalHeaderLabels(titles);
@@ -54,7 +54,7 @@ void MainWindow::on_addMember_clicked()
 
 void MainWindow::on_bookList_clicked(const QModelIndex &index)
 {
-    QStandardItem* temp = this->model->item(index.row(), 4);
+    QStandardItem* temp = this->model->item(index.row(), 5);
     if(temp->text() == "Yes") {
         ui->issueBtn->setEnabled(true);
         ui->returnBtn->setEnabled(false);
@@ -70,13 +70,18 @@ void MainWindow::on_bookList_clicked(const QModelIndex &index)
 
 void MainWindow::on_issueBtn_clicked()
 {
-    QUuid id = QUuid::fromString(this->model->item(this->activated_row)->text());
-//    this->storage->editBook(id, [](Book &obj) {obj.Issue(QUuid::fromString('123'));});
+    IssueBookDialog dialog(this, this->model, this->storage, this->activated_row);
+    dialog.setModal(true);
+    dialog.exec();
 }
 
 void MainWindow::on_returnBtn_clicked()
 {
-
+    QUuid book_id = QUuid::fromString(this->model->item(this->activated_row)->text());
+    auto func = [](Book &b) {b.returnItem();};
+    Book b = this->storage->editBook(book_id, func);
+    this->model->removeRow(this->activated_row);
+    this->model->insertRow(this->activated_row, b.returnItem());
 }
 
 void MainWindow::on_removeBtn_clicked()

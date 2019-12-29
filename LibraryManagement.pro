@@ -21,6 +21,7 @@ SOURCES += \
     bookdialog.cpp \
     editbookdialog.cpp \
     filestorage.cpp \
+    issuebookdialog.cpp \
     main.cpp \
     mainwindow.cpp \
     memberdialog.cpp \
@@ -32,6 +33,7 @@ HEADERS += \
     bookdialog.h \
     editbookdialog.h \
     filestorage.h \
+    issuebookdialog.h \
     mainwindow.h \
     memberdialog.h \
     person.h
@@ -39,6 +41,7 @@ HEADERS += \
 FORMS += \
     bookdialog.ui \
     editbookdialog.ui \
+    issuebookdialog.ui \
     mainwindow.ui \
     memberdialog.ui
 

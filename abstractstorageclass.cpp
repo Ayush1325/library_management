@@ -22,3 +22,5 @@ Book AbstractStorageClass::editBook(QUuid, std::function<void(Book &)>) {}
 AbstractStorageClass::~AbstractStorageClass() {
     delete main_window;
 }
+
+QStringList AbstractStorageClass::getAllMemberIds() {}
